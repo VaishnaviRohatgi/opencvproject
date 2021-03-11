@@ -5,7 +5,7 @@ def run_example():
   # Extract frames from the video and creates thumbnails for one of each
   # Extract frames from video
   print("Extract frames from video")
-  frames = video_to_frames('output4.avi')
+  frames = video_to_frames('output1.avi')
 
   # Generate and save thumbs
   print("Generate and save thumbs")
@@ -17,7 +17,7 @@ def run_example():
 
 def video_to_frames(output4) :
 
-    cap = cv2.VideoCapture('output4.avi')
+    cap = cv2.VideoCapture('output1.avi')
     video_length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) - 1
     frames = []
     if cap.isOpened() and video_length > 0:

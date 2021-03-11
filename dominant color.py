@@ -1,6 +1,8 @@
 import cv2
+import numpy as np
 from sklearn.cluster import KMeans
-
+from PIL import Image
+import matplotlib.pyplot as plt
 
 class DominantColors:
     CLUSTERS = None
@@ -44,3 +46,22 @@ clusters = 5
 dc = DominantColors(img, clusters)
 colors = dc.dominantColors()
 print(colors)
+
+
+
+colors = (np.array(colors)).astype(np.uint8)
+
+title = "p"
+#creating bar image
+cols = len(colors)
+rows = max([1, int(cols/2.5)])
+
+# Create color Array
+barFullData = np.tile(colors, (rows,1)).reshape(rows, cols, 3)
+
+# Create Image from Array
+barImg = Image.fromarray(barFullData, 'RGB')
+
+#saving image
+barImg.save("{}_{}.png".format(title,"method"))
+barImg.show()

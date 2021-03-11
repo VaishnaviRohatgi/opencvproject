@@ -1,17 +1,19 @@
 import cv2
 import numpy as np
-from matplotlib import pyplot as plt
 
-img = cv2.imread("messi5.jpg", cv2.IMREAD_GRAYSCALE)
-lap = cv2.Laplacian(img, c2.CV_64F)
-lap = np.uint8(np.absolute(lap))
+camera = cv2.VideoCapture(0)
 
-titles = ['image', 'laplacian']
-images = [img, dst, blur, gblur, median, bilateralfilter, lap]
+while True:
+    _, frame = camera.read()
+    cv2.imshow("Camera", frame)
+    lap = cv2.Laplacian(frame, cv2.CV_64F)
+    lap = np.uint8(np.absolute(lap))
+    cv2.imshow("Laplacian", lap)
 
-for i in range(6):
-    plt.subplot(1, 2, i+1), plt.imshow(images[i], 'gray')
-    plt.title(titles[i])
-    plt.xticks([]), plt.yticks([])
+    edges = cv2.Canny(frame,0,0 )
+    cv2.imshow("canny", edges)
 
-plt.show()
+    if cv2.waitKey(5) == ord('x'):
+        break
+camera.release()
+cv2.destroyAllWindows()

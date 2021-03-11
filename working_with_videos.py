@@ -4,7 +4,7 @@ cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 
-out = cv2.VideoWriter('output2.avi', fourcc, 20 , (640, 480))
+out = cv2.VideoWriter('output1.avi', fourcc, 20 , (640, 480))
 print(cap.isOpened())
 while (cap.isOpened()):
     check, frame = cap.read()
